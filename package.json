@@ -1,0 +1,22 @@
+{
+  "name": "recaptcha",
+  "version": "1.0.0",
+  "description": "Wrapper for the Google Captcha service for asynchronously validating capture calls",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/citypay/node-recaptcha.git"
+  },
+  "author": "gary.feltham@citypay.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/citypay/node-recaptcha/issues"
+  },
+  "homepage": "https://github.com/citypay/node-recaptcha#readme",
+  "dependencies": {
+    "winston": "^2.3.1"
+  }
+}
