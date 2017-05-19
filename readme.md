@@ -73,5 +73,9 @@ let failureHandler = function (msg) {
 });
 ```
   
+### Testing Recaptcha 
   
+  In upstreams projects, you may want to include the recaptcha process but don't have the means to
+  generate a new response code for every iteration. For this reason you can add `enabled: false` to 
+   the request object.
 

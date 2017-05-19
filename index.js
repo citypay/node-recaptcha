@@ -34,6 +34,13 @@ module.exports = function (cfg) {
     // post data for sending to
     let postData = `response=${encodeURIComponent(cfg.response)}&secret=${encodeURIComponent(cfg.secret)}`;
 
+    // ability to bypass captcha's primarily for testing purposes
+    if (!cfg.enabled) {
+        winston.warn("Google reCaptcha ...Disabled");
+        cfg.success();
+        return;
+    }
+
     // check the incoming captcha settings and if correct then continue
     http.request({
         hostname: 'www.google.com',
@@ -45,18 +52,19 @@ module.exports = function (cfg) {
             'Content-Length': Buffer.byteLength(postData)
         }
     }, res => {
-        winston.info(`STATUS: ${res.statusCode}`);
+        winston.debug(`Google SiteVerify ResponseCode: ${res.statusCode}`);
         res.setEncoding('utf8');
         res.on('data', data => {
-            winston.debug(`Google SiteVerify Response Data ${JSON.stringify(data)}`);
             if (data.success) {
+                winston.debug("Google SiteVerify ...OK");
                 cfg.success();
             } else {
+                winston.warn(`Google SiteVerify ...${data}`);
                 cfg.failure(data);
             }
         });
     }).on('error', e => {
-        winston.info("Google SiteVerify error: " + e.message);
+        winston.error("Google SiteVerify error: " + e.message);
         cfg.err(e.message);
     }).write(postData);
 
