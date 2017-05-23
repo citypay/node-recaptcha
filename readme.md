@@ -63,6 +63,9 @@ let failureHandler = function (msg) {
     // the secret value supplied by the Google reCaptcha API
     secret: "9834pq98gnaiunga...", 
     
+    // the remote ip address of the end user
+    remoteip: "1.2.3.4",
+    
     // a function which is called when successfully validated with Google. No arguments supplied
     success: successHandler, 
     

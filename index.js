@@ -26,13 +26,16 @@ module.exports = function (cfg) {
     if (!cfg.response) {
         return cfg.err("illegal argument. No response value");
     }
+    if (!cfg.remoteip) {
+        return cfg.err("illegal argument. No remoteip value");
+    }
     if (!cfg.success) {
         return cfg.err("illegal argument. No success function supplied");
     }
 
     // setup the captcha check and post off to Google for verification
     // post data for sending to
-    let postData = `response=${encodeURIComponent(cfg.response)}&secret=${encodeURIComponent(cfg.secret)}`;
+    let postData = `response=${encodeURIComponent(cfg.response)}&secret=${encodeURIComponent(cfg.secret)}&remoteip=${encodeURIComponent(cfg.remoteip)}`;
 
     // ability to bypass captcha's primarily for testing purposes
     if (!cfg.enabled) {
