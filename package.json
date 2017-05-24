@@ -1,6 +1,6 @@
 {
   "name": "recaptcha",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Wrapper for the Google Captcha service for asynchronously validating capture calls",
   "main": "index.js",
   "scripts": {

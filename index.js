@@ -57,12 +57,13 @@ module.exports = function (cfg) {
     }, res => {
         winston.debug(`Google SiteVerify ResponseCode: ${res.statusCode}`);
         res.setEncoding('utf8');
-        res.on('data', data => {
+        res.on('data', d => {
+            let data = JSON.parse(d);
             if (data.success) {
                 winston.debug("Google SiteVerify ...OK");
                 cfg.success();
             } else {
-                winston.warn(`Google SiteVerify ...${data}`);
+                winston.warn(`Google SiteVerify ...${JSON.stringify(data)}`);
                 cfg.failure(data);
             }
         });
