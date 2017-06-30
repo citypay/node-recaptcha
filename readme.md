@@ -1,5 +1,8 @@
 # Node Recaptcha Validator
 
+[![Build Status](https://circleci.com/gh/citypay/node-recaptcha.svg?&style=shield)](https://circleci.com/gh/citypay/node-recaptcha)
+
+
 Validates a Google recaptcha token along with it's secret via the Google reCaptcha API.
 
 Api Information at [Google ReCAPTCHA Website](https://developers.google.com/recaptcha/)
